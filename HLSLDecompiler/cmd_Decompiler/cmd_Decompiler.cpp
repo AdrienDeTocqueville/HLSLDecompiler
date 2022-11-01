@@ -885,7 +885,7 @@ static int WriteOutput(string const *in_filename, char const *extension, string 
 
 	// Also handles the case where the file has no extension (well, unless
 	// some fool does foo.bar\baz):
-	out_filename = in_filename->substr(0, in_filename->rfind(".")) + extension;
+	out_filename = *in_filename + extension;
 	LogInfo("  -> %s\n", out_filename.c_str());
 
 	fopen_s(&fp, out_filename.c_str(), "wb");
@@ -981,6 +981,11 @@ static int process(string const *filename)
 int main(int argc, char *argv[])
 {
 	int rc = EXIT_SUCCESS;
+
+	/*
+	while (!::IsDebuggerPresent())
+		::Sleep(100); // to avoid 100% CPU load
+	*/
 
 	parse_args(argc, argv);
 

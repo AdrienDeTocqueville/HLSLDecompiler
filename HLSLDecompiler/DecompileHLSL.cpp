@@ -3041,7 +3041,7 @@ public:
 			}
 			else if (!strcmp(statement, "dcl_constantbuffer"))
 			{
-				char *strPos = strstr(op1, "cb");
+				char *strPos = strstr(op1, "CB");
 				if (strPos)
 				{
 					int bufIndex = 0;
